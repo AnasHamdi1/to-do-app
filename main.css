@@ -57,19 +57,21 @@ svg,
 span,
 input,
 label,
-button {
+button,
+textarea {
   display: block;
   font: inherit;
+  outline: none;
+}
+
+textarea {
+  resize: none;
 }
 
 button {
   border: none;
   cursor: pointer;
   color: var(--white);
-}
-
-input {
-  outline: 0;
 }
 
 .d-flex {
@@ -224,13 +226,13 @@ input {
   margin: 0;
 }
 
-.tasks .task .text-content input {
+.tasks .task .text-content .task-title {
   border: none;
   width: 100%;
   font-size: 1.5rem;
 }
 
-.tasks .task.done .text-content input {
+.tasks .task.done .text-content .task-title {
   text-decoration: line-through;
 }
 
@@ -274,7 +276,7 @@ input {
 }
 
 @media (max-width: 400px) {
-  .tasks .task .text-content input {
+  .tasks .task .text-content .task-title {
     font-size: 1.4rem;
   }
 

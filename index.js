@@ -49,7 +49,7 @@ tasks.addEventListener("click", function (e) {
         if (!task.done) {
           let input = e.target
             .closest(".task")
-            .querySelector(".text-content input");
+            .querySelector(".text-content .task-title");
 
           e.target.innerHTML = "Save";
           input.readOnly = false;
@@ -60,6 +60,7 @@ tasks.addEventListener("click", function (e) {
             input.readOnly = true;
             task.textContent = input.value;
 
+            updateLocalStorage();
             createTasks();
           };
         }
@@ -120,7 +121,7 @@ function createTasks() {
       let catLabel = document.createElement("label");
       let catLabelSpan = document.createElement("span");
       let textContent = document.createElement("div");
-      let textContentInput = document.createElement("input");
+      let textContentInput = document.createElement("textarea");
       let textContentSpan = document.createElement("span");
       let actions = document.createElement("div");
       let actionsEdit = document.createElement("button");
@@ -138,8 +139,9 @@ function createTasks() {
       cat.append(catInput, catLabel);
 
       textContent.className = "text-content";
-      textContentInput.type = "text";
+      textContentInput.rows = 1;
       textContentInput.readOnly = true;
+      textContentInput.className = "task-title";
       textContentInput.value = task.textContent;
 
       textContentSpan.className = "date";
@@ -181,7 +183,6 @@ function checkEmpty() {
 
     div.addEventListener("mousedown", function () {
       this.style.boxShadow = "0 0";
-      taskInput.focus();
     });
 
     div.addEventListener("mouseup", function () {
